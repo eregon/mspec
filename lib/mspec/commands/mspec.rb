@@ -163,6 +163,8 @@ class MSpecMain < MSpecScript
       else
         cmd, *rest = config[:target].split(/\s+/)
         argv = rest + argv unless rest.empty?
+        p ([cmd]+argv)*' '
+        p ENV["RUBYOPT"]
         exec cmd, *argv
       end
     end

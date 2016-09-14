@@ -1,7 +1,8 @@
 require 'mspec/runner/mspec'
 require 'mspec/runner/actions/tally'
+require 'mspec/utils/ruby_name'
 
-require 'rbconfig'
+#require 'rbconfig'
 
 class SpecGuard
   def self.report

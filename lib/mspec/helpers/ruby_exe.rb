@@ -163,6 +163,7 @@ class Object
     [RUBY_EXE, ENV['RUBY_FLAGS'], opts[:options], body, opts[:args]].compact.join(' ')
   end
 
+  RUBY_EXE = 'bin/mruby'
   unless Object.const_defined?(:RUBY_EXE) and RUBY_EXE
     require 'rbconfig'
 

@@ -32,7 +32,8 @@ class SpecVersion
         patch = 9999 unless patch
       end
       parts = [major, minor, tiny, patch].map { |x| x.to_i }
-      @integer = ("1%02d%02d%02d%04d" % parts).to_i
+      #@integer = ("1%02d%02d%02d%04d" % parts).to_i
+      @integer = ("1%02d%02d%02d" % parts[0,3]).to_i*10000 + ("%04d" % parts[3,1]).to_i
     end
     @integer
   end
@@ -45,7 +46,7 @@ class SpecVersion
     if other.respond_to? :to_int
       other = Integer other
     else
-      other = SpecVersion.new(String(other)).to_i
+      other = SpecVersion.new(other.to_s).to_i
     end
 
     self.to_i <=> other

@@ -176,7 +176,8 @@ class ContextState
   # <tt>MSpec.mode?(:pretend)</tt> is true.
   def protect(what, blocks, check=true)
     return true if check and MSpec.mode? :pretend
-    Array(blocks).all? { |block| MSpec.protect what, &block }
+    blocks = [blocks] unless blocks.is_a? Array
+    blocks.all? { |block| MSpec.protect what, &block }
   end
 
   # Removes filtered examples. Returns true if there are examples

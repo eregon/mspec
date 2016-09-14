@@ -122,7 +122,7 @@ class MSpecOptions
   # Parses an array of command line entries, calling blocks for
   # registered options.
   def parse(argv=ARGV)
-    argv = Array(argv).dup
+    argv = argv.to_a.dup
 
     while entry = argv.shift
       # collect everything that is not an option

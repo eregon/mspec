@@ -142,7 +142,7 @@ class MSpecScript
   # Sets up signal handlers. Only a handler for SIGINT is
   # registered currently.
   def signals
-    if config[:abort]
+    if false and config[:abort]
       Signal.trap "INT" do
         MSpec.actions :abort
         puts "\nProcess aborted!"

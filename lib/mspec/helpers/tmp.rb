@@ -9,26 +9,26 @@ SPEC_TEMP_UNIQUIFIER = "0"
 
 SPEC_TEMP_DIR_PID = Process.pid
 
-at_exit do
-  begin
-    if SPEC_TEMP_DIR_PID == Process.pid
-      Dir.delete SPEC_TEMP_DIR if File.directory? SPEC_TEMP_DIR
-    end
-  rescue SystemCallError
-    STDERR.puts <<-EOM
-
------------------------------------------------------
-The rubyspec temp directory is not empty. Ensure that
-all specs are cleaning up temporary files:
-  #{SPEC_TEMP_DIR}
------------------------------------------------------
-
-    EOM
-  rescue Object => e
-    STDERR.puts "failed to remove spec temp directory"
-    STDERR.puts e.message
-  end
-end
+# at_exit do
+#   begin
+#     if SPEC_TEMP_DIR_PID == Process.pid
+#       Dir.delete SPEC_TEMP_DIR if File.directory? SPEC_TEMP_DIR
+#     end
+#   rescue SystemCallError
+#     STDERR.puts <<-EOM
+#
+# -----------------------------------------------------
+# The rubyspec temp directory is not empty. Ensure that
+# all specs are cleaning up temporary files:
+#   #{SPEC_TEMP_DIR}
+# -----------------------------------------------------
+#
+#     EOM
+#   rescue Object => e
+#     STDERR.puts "failed to remove spec temp directory"
+#     STDERR.puts e.message
+#   end
+# end
 
 class Object
   def tmp(name, uniquify=true)

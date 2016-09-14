@@ -1,5 +1,6 @@
 require 'mspec/runner/context'
 require 'mspec/runner/exception'
+require 'mspec/runner/object'
 require 'mspec/runner/tag'
 
 module MSpec
@@ -69,8 +70,8 @@ module MSpec
     begin
       @env.instance_eval(&block)
       return true
-    rescue SystemExit
-      raise
+    # rescue SystemExit
+    #   raise
     rescue Exception => exc
       register_exit 1
       actions :exception, ExceptionState.new(current && current.state, location, exc)
