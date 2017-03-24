@@ -124,18 +124,29 @@ class MSpecMain < MSpecScript
     timer = TimerAction.new
     timer.start
 
-    files = config[:ci_files].inject([]) do |list, item|
-      name = tmp "mspec-ci-multi-#{list.size}"
+    patterns = [argv.last] # TODO
+    files = files(patterns)
 
-      rest = argv + ["-o", name, item]
-      fork { system [config[:target], *rest].join(" ") }
+    cores = 4
+    chunk = files.size/cores
+    groups = cores.times.map { |i| files[chunk*i...chunk*(i+1)] }
+    groups[-1] += files[chunk*cores..-1]
+    groups = %w[core language library optional]
 
-      list << name
+    File.mkdir tmp("") unless File.directory? tmp("")
+
+    yamls = groups.map do |group|
+      name = tmp "mspec-ci-multi"
+      tmpdir = name + "_tmpdir"
+      rest = argv[0...-1] + ["-o", name, *group]
+      # p rest
+      fork { system({ "SPEC_TEMP_DIR" => tmpdir }, config[:target], *rest) }
+      name
     end
 
     Process.waitall
     timer.finish
-    report files, timer
+    report yamls, timer
   end
 
   def run
@@ -153,7 +164,7 @@ class MSpecMain < MSpecScript
     argv << "#{MSPEC_HOME}/bin/mspec-#{ config[:command] || "run" }"
     argv.concat config[:options]
 
-    if config[:multi] and config[:command] == "ci"
+    if config[:multi] #and config[:command] == "ci"
       multi_exec argv
     else
       if config[:use_valgrind]
