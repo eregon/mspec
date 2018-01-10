@@ -23,3 +23,8 @@ matrix:
       - curl -L https://github.com/graalvm/truffleruby/releases/download/vm-enterprise-0.30/truffleruby-testing-0.30.tar.gz | tar xz
       - export PATH="$PWD/truffleruby/bin:$PATH"
       - bundle install
+addons:
+  apt:
+    packages:
+    - libc++-dev
+    - libc++abi1
