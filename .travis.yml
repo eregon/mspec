@@ -20,6 +20,12 @@ matrix:
       - gem update --system
   - jdk: oraclejdk8
     install:
-      - curl -L https://github.com/graalvm/truffleruby/releases/download/vm-enterprise-0.28/truffleruby-testing-0.28.tar.gz | tar xz
-      - source truffleruby/setup_env
+      - curl -L https://github.com/eregon/truffleruby-native-releases/releases/download/2018-01-16/truffleruby-native-linux-amd64.tar.gz | tar xz
+      - export PATH="$PWD/truffleruby/bin:$PATH"
+      - export TRUFFLERUBY_RESILIENT_GEM_HOME=true
       - bundle install
+    addons:
+      apt:
+        packages:
+        - libc++-dev
+        - libc++abi1
