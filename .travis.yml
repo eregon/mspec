@@ -23,9 +23,7 @@ matrix:
       - curl -L https://github.com/eregon/truffleruby-native-releases/releases/download/2018-01-18/truffleruby-native-linux-amd64.tar.gz | tar xz
       - export PATH="$PWD/truffleruby/bin:$PATH"
       - export TRUFFLERUBY_RESILIENT_GEM_HOME=true
-      - ruby -Dgraal.TruffleCompileOnly=nothing -S bundle install
-    script:
-      - ruby -Dgraal.TruffleCompileOnly=nothing -S bundle exec rspec
+      - bundle install
     addons:
       apt:
         packages:
