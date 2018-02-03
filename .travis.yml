@@ -19,7 +19,7 @@ matrix:
       # https://github.com/travis-ci/travis-ci/issues/8978
       - gem update --system
   - install:
-      - curl -L https://github.com/eregon/truffleruby-native-releases/releases/download/2018-01-23/truffleruby-native-linux-amd64.tar.gz | tar xz
+      - curl -L https://github.com/eregon/truffleruby-native-releases/releases/download/2018-02-01/truffleruby-native-linux-amd64.tar.gz | tar xz
       - export PATH="$PWD/truffleruby/bin:$PATH"
       - bundle install
     addons:
