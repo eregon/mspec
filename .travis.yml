@@ -25,7 +25,7 @@ matrix:
       - curl -L https://github.com/oracle/truffleruby/releases/download/vm-1.0.0-rc2/truffleruby-1.0.0-rc2-linux-amd64.tar.gz | tar xz
       - export PATH="$PWD/truffleruby-1.0.0-rc2-linux-amd64/bin:$PATH"
       - $PWD/truffleruby-1.0.0-rc2-linux-amd64/lib/truffle/post_install_hook.sh
-      - ruby --native.XX:+PrintGC -S gem install bundler
-      - ruby --native.XX:+PrintGC -S bundle install
+      - ruby --native.Dgraal.TruffleCompileOnly=nothing --native.XX:+PrintGC -S gem install bundler
+      - ruby --native.Dgraal.TruffleCompileOnly=nothing --native.XX:+PrintGC -S bundle install
     script:
-      - ruby --native.XX:+PrintGC -S bundle exec rspec
+      - ruby --native.Dgraal.TruffleCompileOnly=nothing --native.XX:+PrintGC -S bundle exec rspec
