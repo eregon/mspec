@@ -9,3 +9,5 @@ matrix:
       - rvm get head
       - rvm use truffleruby --install --fuzzy --debug
       - gem install bundler
+    install:
+      - bundler install # --deployment doesn't work currently
