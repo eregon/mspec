@@ -6,8 +6,9 @@ matrix:
   include:
   - rvm: system
     before_install:
-      - rvm get head
-      - rvm use truffleruby --install --fuzzy --debug
+      - rvm mount -r https://github.com/oracle/truffleruby/releases/download/vm-1.0.0-rc2/truffleruby-1.0.0-rc2-linux-amd64.tar.gz -n truffleruby
+      - rvm list
+      - rvm use truffleruby
       - gem install bundler
     install:
       - bundler install # --deployment doesn't work currently
