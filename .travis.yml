@@ -1,5 +1,4 @@
-sudo: false
-dist: trusty
+os: osx
 language: ruby
 install: true
 script:
