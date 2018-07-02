@@ -1,6 +1,15 @@
 sudo: false
 dist: trusty
 language: ruby
-install: true
+rvm: system
+install:
+- curl -L https://github.com/oracle/truffleruby/releases/download/vm-1.0.0-rc3/truffleruby-1.0.0-rc3-linux-amd64.tar.gz | tar xz
+- export PATH="$PWD/truffleruby-1.0.0-rc3-linux-amd64/bin:$PATH"
+- export AOT_BIN="$PWD/truffleruby-1.0.0-rc3-linux-amd64/bin/ruby"
 script:
-  - ruby -ropenssl -e 'p [OpenSSL::OPENSSL_LIBRARY_VERSION, OpenSSL::OPENSSL_VERSION]'
+- ruby -ropenssl -e 'p [OpenSSL::OPENSSL_LIBRARY_VERSION, OpenSSL::OPENSSL_VERSION]'
+- ruby -ropen-uri -e "puts open(%{https://rubygems.org/}) { |f| f.read }[0,1000]"
+- git clone --branch rc3-testing https://github.com/eregon/truffleruby.git
+- cd truffleruby
+- ruby spec/mspec/bin/mspec run --config spec/truffle.mspec --excl-tag fails --excl-tag graalvm --excl-tag aot -t $AOT_BIN :library_cext
+- tool/jt.rb test mri --native --openssl
