@@ -12,4 +12,5 @@ script:
 - git clone --branch rc3-testing --depth 1 https://github.com/eregon/truffleruby.git
 - cd truffleruby
 - ruby spec/mspec/bin/mspec run --config spec/truffle.mspec --excl-tag fails --excl-tag graalvm --excl-tag aot -t $AOT_BIN :library_cext
+- echo 'def trap(sig, prc=nil, &block); if sig != "INFO" && sig != :INFO; super; end; end' >> src/main/ruby/core/kernel.rb
 - tool/jt.rb test mri --native --openssl
