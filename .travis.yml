@@ -1,11 +1,10 @@
-sudo: required
-dist: precise
+os: osx
 language: ruby
 rvm: system
 install:
-- curl -L https://github.com/oracle/truffleruby/releases/download/vm-1.0.0-rc3/truffleruby-1.0.0-rc3-linux-amd64.tar.gz | tar xz
-- export PATH="$PWD/truffleruby-1.0.0-rc3-linux-amd64/bin:$PATH"
-- export AOT_BIN="$PWD/truffleruby-1.0.0-rc3-linux-amd64/bin/ruby"
+- curl -L https://github.com/oracle/truffleruby/releases/download/vm-1.0.0-rc3/truffleruby-1.0.0-rc3-macos-amd64.tar.gz | tar xz
+- export PATH="$PWD/truffleruby-1.0.0-rc3-macos-amd64/bin:$PATH"
+- export AOT_BIN="$PWD/truffleruby-1.0.0-rc3-macos-amd64/bin/ruby"
 script:
 - ruby -ropenssl -e 'p [OpenSSL::OPENSSL_LIBRARY_VERSION, OpenSSL::OPENSSL_VERSION]'
 - ruby -ropen-uri -e "puts open(%{https://rubygems.org/}) { |f| f.read }[0,1000]"
