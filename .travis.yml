@@ -9,7 +9,7 @@ install:
 script:
 - ruby -ropenssl -e 'p [OpenSSL::OPENSSL_LIBRARY_VERSION, OpenSSL::OPENSSL_VERSION]'
 - ruby -ropen-uri -e "puts open(%{https://rubygems.org/}) { |f| f.read }[0,1000]"
-- git clone --branch rc3-testing https://github.com/eregon/truffleruby.git
+- git clone --branch rc3-testing --depth 1 https://github.com/eregon/truffleruby.git
 - cd truffleruby
 - ruby spec/mspec/bin/mspec run --config spec/truffle.mspec --excl-tag fails --excl-tag graalvm --excl-tag aot -t $AOT_BIN :library_cext
 - tool/jt.rb test mri --native --openssl
