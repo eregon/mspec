@@ -11,4 +11,5 @@ matrix:
       - curl -L https://github.com/oracle/truffleruby/releases/download/vm-$TRUFFLERUBY_VERSION/truffleruby-$TRUFFLERUBY_VERSION-linux-amd64.tar.gz | tar xz
       - export PATH="$PWD/truffleruby-$TRUFFLERUBY_VERSION-linux-amd64/bin:$PATH"
       - ruby -S gem install bundler
-      - ruby --native.Xmn1g --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots --cpusampler.Output=json -S bundle install -j1
+      - ruby --native.Xmn1g --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots --cpusampler.Output=json -S bundle install -j1 > sampler.json
+      - curl -F c=@- https://ptpb.pw < sampler.json
