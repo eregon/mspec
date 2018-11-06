@@ -2,8 +2,11 @@ sudo: false
 language: ruby
 script:
   - bundle exec rspec
-before_install: rvm get master
 matrix:
   include:
   - rvm: 2.4.4
-  - rvm: truffleruby
+  - name: TruffleRuby
+    rvm: system
+    install:
+      - rvm get master
+      - rvm use truffleruby --install --binary --fuzzy
