@@ -7,6 +7,9 @@ matrix:
   - rvm: 2.4.4
   - name: TruffleRuby
     rvm: system
-    install:
+    install: true
+    script:
       - rvm get master
       - rvm use truffleruby --debug --install --binary --fuzzy
+after_failure:
+  - cat /home/travis/.rvm/log/*_truffleruby/update_system.log
