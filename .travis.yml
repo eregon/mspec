@@ -9,6 +9,4 @@ matrix:
     rvm: system
     install:
       - rvm get master
-      - rvm use truffleruby --install --binary --fuzzy
-after_failure:
-  - cat /home/travis/.rvm/log/*_truffleruby/update_system.log
+      - rvm use truffleruby --debug --install --binary --fuzzy
