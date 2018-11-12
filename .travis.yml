@@ -12,6 +12,6 @@ matrix:
       - rvm get master
       - rvm autolibs disable
       # - rvm use truffleruby --debug --install --binary --fuzzy
-      - rvm install truffleruby --debug --binary --fuzzy
+      - rvm install truffleruby --debug --binary
 after_failure:
   - cat /home/travis/.rvm/log/*_truffleruby/update_system.log
