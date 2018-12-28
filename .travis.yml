@@ -1,11 +1,9 @@
 sudo: false
 language: ruby
 script:
+  - rvm get master
+  - rvm list
+  - rvm use 2.3.7
   - bundle exec rspec
 rvm:
   - 2.3.7
-  - 2.4.4
-  - 2.5.1
-  - 2.6.0
-  - ruby-head
-  - truffleruby
