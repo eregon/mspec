@@ -5,8 +5,7 @@ install:
   - cat /sys/fs/cgroup/memory/memory.stat
   - cat /sys/fs/cgroup/memory/memory.usage_in_bytes
   - cat /sys/fs/cgroup/memory/memory.limit_in_bytes
-  - ruby --native.Xmn1g --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots -S bundle install -j1 --deployment
 script:
-  - true
+  - ruby -e '200.times.map { |i| s="a" * (100*(2**20)); p (i+1)/10.0; s }'
 rvm:
-  - truffleruby
+  - 2.6.0
