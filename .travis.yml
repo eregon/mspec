@@ -1,7 +1,7 @@
 sudo: false
 language: ruby
 install:
-  - ruby --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots -S bundle install --jobs=1 --retry=3 --deployment
+  - ruby --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots -S bundle install -j1 --deployment
 script:
   - bundle exec rspec
 rvm:
