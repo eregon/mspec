@@ -1,8 +1,9 @@
 sudo: false
 language: ruby
 install:
+  - free -m
   - ruby --native.Xmn1g --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots -S bundle install -j1 --deployment
 script:
-  - bundle exec rspec
+  - true
 rvm:
   - truffleruby
