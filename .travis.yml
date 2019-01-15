@@ -2,6 +2,7 @@ sudo: false
 language: ruby
 install:
   - free -m
+  - cat /sys/fs/cgroup/memory/memory.stat
   - ruby --native.Xmn1g --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots -S bundle install -j1 --deployment
 script:
   - true
