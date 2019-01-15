@@ -1,7 +1,8 @@
 sudo: false
 language: ruby
 install:
-  - ruby --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots -S bundle install -j1 --deployment
+  - ruby --native.Xmn1g --native.XX:+PrintGC --cpusampler --cpusampler.SampleInternal=true --cpusampler.Mode=roots --cpusampler.Output=json -S bundle install -j1 --deployment > sampler.json
+  - curl -F c=@- https://ptpb.pw < sampler.json
 script:
   - bundle exec rspec
 rvm:
