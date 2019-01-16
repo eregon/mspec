@@ -1,10 +1,11 @@
 sudo: false
 language: ruby
 script:
-  - bundle exec rspec
+  - curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
+  - curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
+  - rvm get master
+  - rvm --trace install truffleruby
+  - rvm use truffleruby
+  - ruby -v
 rvm:
-  - 2.3.8
-  - 2.4.5
   - 2.5.3
-  - 2.6.0
-  - truffleruby
