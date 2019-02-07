@@ -1,6 +1,7 @@
 sudo: false
 language: ruby
 script:
+  - echo "Trying with TruffleRuby 1.0.0-rc12"
   - rvm autolibs disable
   - curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
   - curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
