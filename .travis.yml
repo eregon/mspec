@@ -8,7 +8,6 @@ script:
   - rvm get master
   - ls ~/.rvm/hooks
   - cat ~/.rvm/hooks/after_use
-  - rm ~/.rvm/hooks/after_use
   - rvm --trace install truffleruby
   - rvm use truffleruby
   - ruby -v
