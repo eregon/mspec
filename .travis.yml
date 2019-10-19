@@ -1,9 +1,11 @@
-sudo: false
 language: ruby
 script:
-  - bundle exec rspec
+  - bundle --version
 rvm:
-  - 2.4.6
-  - 2.5.5
-  - 2.6.3
-  - truffleruby
+  - 2.0.0-p648
+  - 2.1.10
+  - 2.2.10
+  - 2.3.8
+  - 2.4.9
+  - 2.5.7
+  - 2.6.5
