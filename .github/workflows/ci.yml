@@ -14,5 +14,9 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - run: bundle install -j1
       env:
-        TRUFFLERUBYOPT: "--experimental-options --cpusampler --cpusampler.Mode=roots --cpusampler.SampleInternal"
+        TRUFFLERUBYOPT: "--experimental-options --cpusampler --cpusampler.Mode=roots --cpusampler.SampleInternal --cpusampler.Output=json --cpusampler.OutputFile=profile.json"
+    - uses: actions/upload-artifact@v1
+      with:
+        name: profile
+        path: profile.json
     #- run: bundle exec rspec
