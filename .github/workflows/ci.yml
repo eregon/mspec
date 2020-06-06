@@ -12,4 +12,5 @@ jobs:
     - uses: eregon/setup-ruby@0623016f2cfba063886f9d6246620506f41483ae
       with:
         ruby-version: ${{ matrix.ruby }}
+
     - run: bundle exec rspec
