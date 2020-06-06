@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: eregon/setup-ruby@automated-bundler-caching
+    - uses: eregon/setup-ruby@0623016f2cfba063886f9d6246620506f41483ae
       with:
         ruby-version: ${{ matrix.ruby }}
     - run: bundle exec rspec
