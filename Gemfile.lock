@@ -13,9 +13,11 @@ GEM
     rspec-mocks (2.14.6)
 
 PLATFORMS
-  java
   ruby
 
 DEPENDENCIES
   rake (~> 12.3)
   rspec (~> 2.14.1)
+
+BUNDLED WITH
+   2.1.4
